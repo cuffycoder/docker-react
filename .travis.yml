@@ -8,3 +8,14 @@ before_install:
 script:
     - docker run -e CI=true cuffycoder/docker-react npm run test
 
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-2"
+    app: "docker-react-exercise"
+    env: DockerReactExercise-env
+    bucket_name: elasticbeanstalk-us-west-2-266669267640
+    bucket_path: "docker-react-exercise"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
